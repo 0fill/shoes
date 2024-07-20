@@ -12,13 +12,16 @@ class Shoe():
     def __str__(self):
         return f'{self.sex} {self.type} {self.color} {self.price} {self.brand} {self.size}'
 
-class credit_card:
+class Credit_card:
     def __init__(self, id,balance):
         self.id = id
         self.balance = balance
 
     def add_balance(self, balance):
         self.balance += balance
+
+    def pay_with(self, amount):
+        self.balance -= amount
 
 
 class Catalog():
