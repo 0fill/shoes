@@ -56,12 +56,20 @@ def func(func1, catalog):  #addC removeS removeC
     k = get_choice(len(catalog.shoes) - 1)
     func1(catalog, int(k))
 
+def pay_deposit(catalog, ammount):
+    catalog.balance += ammount
 
-def card_payment(catalog):
-    card = Credit_card(get_card(), 5000)
+def card_payment(catalog,card):
     if check_for_money(catalog, card):
         if random.randint(0, 1):
             card.pay_with(get_prize(catalog))
             buy_cart(catalog)
         else:
             print(">:c")
+
+def cash_payment(catalog):
+    if check_for_money(catalog, catalog):
+        catalog.balance -= get_prize(catalog)
+        buy_cart(catalog)
+        catalog.balance = 0
+

@@ -29,6 +29,7 @@ class Catalog():
     def __init__(self):
         self.shoes = []
         self.cart = []
+        self.balance = 0
 
 
 class shoe_maker:
