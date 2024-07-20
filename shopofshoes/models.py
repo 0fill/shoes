@@ -12,26 +12,21 @@ class Shoe():
     def __str__(self):
         return f'{self.sex} {self.type} {self.color} {self.price} {self.brand} {self.size}'
 
+class credit_card:
+    def __init__(self, id,balance):
+        self.id = id
+        self.balance = balance
+
+    def add_balance(self, balance):
+        self.balance += balance
+
+
 class Catalog():
 
     def __init__(self):
         self.shoes = []
         self.cart = []
 
-    """def add_shoe(self, shoe):
-        self.shoes.append(shoe)
-
-    def add_shoe_carts(self, shoe):
-        self.cart.append(shoe)
-        self.shoes.remove(shoe)
-
-    def remove_from_cart(self, shoe):
-        self.cart.remove(shoe)
-        self.shoes.append(shoe)
-
-    def buy_shoe(self):
-        self.cart.clear()
-"""
 
 class shoe_maker:
     def __init__(self):

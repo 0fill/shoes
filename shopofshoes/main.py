@@ -16,34 +16,32 @@ add_shoe(catalog, Shoe(sex="female", type="sandals", color="gold", price=349.00,
 add_shoe(catalog, Shoe(sex="male", type="espadrilles", color="blue", price=39.99, brand="TOMS", size=10))
 add_shoe(catalog, Shoe(sex="unisex", type="sneakers", color="black and white", price=69.95, brand="Adidas", size=9))
 
+
 def run():
-    global i
     catalog = Catalog()
     while True:
         main_menu()
-        C = False
-        while not C:
-            i = get_input(5)
-            C = check_choice(i, 5)
+        i = get_choice(3)
         if i == '1':
+            display(catalog.shoes)
             catalog_menu()
-            C = False
-            while not C:
-                i = get_input(5)
-                C = check_choice(i, 3)
-            if i == '1':
+            i = get_choice(4)
+            if i == '1':  #catalog -> cart
+                func(add_shoe_carts, catalog)
                 display(catalog.shoes)
-                add_shoe_carts(catalog,)
-            elif i == '2':
-                func(remove_from_cart,catalog)
-            elif i == '3':
+                add_shoe_carts(catalog, get_choice(len(catalog.shoes)))
+            elif i == '2':  #cart -> catalog
+                func(remove_from_cart, catalog)
+            elif i == '3':  #check cart
                 display(catalog.cart)
                 print(get_prize(catalog))
-            elif i == '4':
-                if check_for_money():
-                   buy_cart()
+            elif i == '4':  #pay
+                pay_menu()
+                i = get_choice(3)
+                if i == '1':
+
         elif i == '2':
-            add_shoe(catalog,(
+            add_shoe(catalog, (
                 tailor.set_sex(input("please enter sex of shoes"))
                 .set_size(input("please enter size of shoes"))
                 .set_brand(input("please enter brand of shoes"))
@@ -52,7 +50,7 @@ def run():
                 .set_type(input("please enter type of shoes"))
             ).create())
         elif i == '3':
-            func(remove_shoe,catalog)
+            func(remove_shoe, catalog)
 
 
 run()

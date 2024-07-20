@@ -33,9 +33,11 @@ def check_choice(index_of_shoe: str,max_choice: int):
     return 0 <= index_of_shoe <= max_choice
 
 
-def filter_choice(max_choice):
-    m = get_input(max_choice)
-
+def get_choice(max_choice):
+    while True:
+        m = get_input(max_choice)
+        if check_choice(m,max_choice):
+            return m
 
 
 def alter_prize(shoe, prize):
@@ -43,6 +45,5 @@ def alter_prize(shoe, prize):
 
 def func(func,catalog): #addC removeS removeC
     display(catalog.shoes)
-    k = chose_shoe(catalog)
-    if check_choice(k,len(catalog.shoes)-1):
-        func(catalog,int(k))
+    k = get_choice(len(catalog.shoes))
+    func(catalog,int(k))
