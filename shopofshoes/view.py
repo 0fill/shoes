@@ -12,8 +12,7 @@ def chose_shoe(catalog):
         return i
 
 
-
-def get_choice(index):
+def get_input(index):
     return input(f"please choose an action(0-{index}): ")
 
 
