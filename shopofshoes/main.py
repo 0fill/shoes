@@ -5,20 +5,11 @@ from models import *
 from view import *
 
 tailor = shoe_maker()
+database = get_pickle_file("data/cards.pkl")
 
 
 def run():
-    inventory = Catalog()
-    add_shoe(inventory, Shoe(sex="male", type="sneakers", color="blue", price=79.99, brand="Nike", size=10))
-    add_shoe(inventory, Shoe(sex="female", type="pumps", color="black", price=199.00, brand="Gucci", size=7))
-    add_shoe(inventory, Shoe(sex="unisex", type="sneakers", color="white", price=59.99, brand="Converse", size=8))
-    add_shoe(inventory, Shoe(sex="male", type="boots", color="brown", price=129.95, brand="Timberland", size=11))
-    add_shoe(inventory, Shoe(sex="female", type="flats", color="pink", price=149.00, brand="Tory Burch", size=6))
-    add_shoe(inventory, Shoe(sex="male", type="dress shoes", color="black", price=249.99, brand="Allen Edmonds", size=9))
-    add_shoe(inventory, Shoe(sex="unisex", type="sneakers", color="grey", price=49.95, brand="Vans", size=7))
-    add_shoe(inventory, Shoe(sex="female", type="sandals", color="gold", price=349.00, brand="Jimmy Choo", size=8))
-    add_shoe(inventory, Shoe(sex="male", type="espadrilles", color="blue", price=39.99, brand="TOMS", size=10))
-    add_shoe(inventory, Shoe(sex="unisex", type="sneakers", color="black and white", price=69.95, brand="Adidas", size=9))
+    inventory = get_pickle_file("data/shoes.pkl")
 
     while True:
         main_menu()
@@ -34,14 +25,15 @@ def run():
                 func(remove_from_cart, inventory)
             elif i == '3':  #check cart
                 showtime(inventory.cart)
-                print(get_prize(inventory))
+                must_pay(inventory)
             elif i == '4':  #pay
                 pay_menu()
                 i = get_choice(2)
                 if i == '1':
-                    Credits = get_card()
-
-                    card_payment(inventory)
+                    id = get_card()
+                    for card in database:
+                        if (card.id == id):
+                            card_payment(inventory, card)
                 elif i == '2':
                     while not check_for_money(inventory, inventory):
                         cash = pay_shoe()
@@ -55,13 +47,15 @@ def run():
             add_shoe(inventory, (
                 tailor.set_sex(input("please enter sex of shoes"))
                 .set_size(input("please enter size of shoes"))
-                .set_brand(input("please enter brand of shoes"))
+                .set_brand(input("please enter brand of shoes"))            #move to controlers later
                 .set_color(input("please enter color of shoes"))
                 .set_price(int(input("please enter price of shoes")))
                 .set_type(input("please enter type of shoes"))
             ).create())
         elif i == '3':
             func(remove_shoe, inventory)
+        elif i == '0':
+            exit(inventory, database, "data/shoes.pkl", "data/cards.pkl")
 
 
 run()

@@ -29,6 +29,7 @@ def main_menu():
 |     1 - browse catalog    |
 |     2 - add shoe          |
 |     3 - remove shoe       |
+|     4 - exit              |
 -----------------------------
 """)
 
@@ -54,3 +55,9 @@ def error_massege():
 
 def pay_massege():
     print("thank you for your purchase")
+
+def must_pay(V):
+    print(get_prize(V))
+
+def no_money_massege():
+    print("youre broke")

@@ -1,4 +1,5 @@
 import random
+import pickle
 
 from view import *
 from models import *
@@ -72,6 +73,8 @@ def card_payment(catalog, card):
             buy_cart(catalog)
         else:
             print(">:c")
+    else:
+        no_money_massege()
 
 
 def cash_payment(catalog):
@@ -88,3 +91,13 @@ def check_cash(m: str):
         error_massege()
         return False
     return True
+
+def get_card(card):
+    return card.id
+
+def get_pickle_file(path):
+    return pickle.load(open(path, "rb"))
+
+def exit(inventory,cards,inventory_path,cards_path):
+    pickle.dump(inventory,open(inventory_path,"wb"))
+    pickle.dump(cards,open(cards_path,"wb"))
