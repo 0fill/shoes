@@ -20,7 +20,6 @@ def run():
             if i == '1':  #catalog -> cart
 
                 func(add_shoe_carts, inventory)
-                #add_shoe_carts(catalog, get_choice(len(catalog.shoes)))
             elif i == '2':  #cart -> catalog
                 func(remove_from_cart, inventory)
             elif i == '3':  #check cart
@@ -40,14 +39,14 @@ def run():
                         if check_cash(cash):
                             cash = int(cash)
                             pay_deposit(inventory, cash)
-                    cash_payment(inventory)  #soon
+                    cash_payment(inventory)
                     pay_massege()
 
         elif i == '2':
             add_shoe(inventory, (
                 tailor.set_sex(input("please enter sex of shoes"))
                 .set_size(input("please enter size of shoes"))
-                .set_brand(input("please enter brand of shoes"))            #move to controlers later
+                .set_brand(input("please enter brand of shoes"))
                 .set_color(input("please enter color of shoes"))
                 .set_price(int(input("please enter price of shoes")))
                 .set_type(input("please enter type of shoes"))

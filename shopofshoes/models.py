@@ -1,6 +1,4 @@
-
-
-class Shoe():
+class Shoe:
     def __init__(self, sex, type, color, price, brand, size):
         self.sex = sex
         self.type = type
@@ -12,8 +10,9 @@ class Shoe():
     def __str__(self):
         return f'{self.sex} {self.type} {self.color} {self.price} {self.brand} {self.size}'
 
+
 class Credit_card:
-    def __init__(self, id,balance):
+    def __init__(self, id, balance):
         self.id = id
         self.balance = balance
 
@@ -41,29 +40,29 @@ class shoe_maker:
         self.brand = None
         self.size = None
 
-    def set_sex(self,sex):
+    def set_sex(self, sex):
         self.sex = sex
         return self
 
-    def set_type(self,type):
+    def set_type(self, type):
         self.type = type
         return self
 
-    def set_color(self,color):
+    def set_color(self, color):
         self.color = color
         return self
 
-    def set_price(self,price):
+    def set_price(self, price):
         self.price = price
         return self
 
-    def set_brand(self,brand):
+    def set_brand(self, brand):
         self.brand = brand
         return self
 
-    def set_size(self,size):
+    def set_size(self, size):
         self.size = size
         return self
 
     def create(self):
-        return Shoe(self.sex,self.type,self.color,self.price,self.brand, self.size)
+        return Shoe(self.sex, self.type, self.color, self.price, self.brand, self.size)

@@ -10,14 +10,6 @@ def get_input(index):
     return input(f"please choose (0-{index}): ")
 
 
-#def card_payment():
-#   print("insert card")
-#  if check_for_money(catalog_menu(),card):
-#     if random.randint(0, 1):
-#        print("payed succesfully")
-#   else:
-#      print("not payed")
-
 def get_card():
     b = input("enter id of card: ")
     return b
@@ -46,7 +38,7 @@ def pay_menu():
 
 
 def pay_shoe():
-    return  input("please chose vlue you want to deposit: ")
+    return input("please chose vlue you want to deposit: ")
 
 
 def error_massege():
@@ -56,8 +48,10 @@ def error_massege():
 def pay_massege():
     print("thank you for your purchase")
 
+
 def must_pay(V):
     print(get_prize(V))
+
 
 def no_money_massege():
     print("youre broke")
